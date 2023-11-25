@@ -32,3 +32,7 @@ void InitBuffer(void);
 void InitCoordBuffer(void);
 //죄표축 그리기
 void drawCoord(void);
+// Frame 버퍼 초기화
+void InitFrameBuffer(void);
+// Frame 그리기
+void drawFrame(void);

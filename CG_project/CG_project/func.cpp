@@ -13,6 +13,9 @@ GLvoid Display(GLvoid)
 
 	//좌표축 그리기
 	drawCoord();
+
+	// Frame 그리기
+	drawFrame();
 	
 	//화면에 출력하기
 	glutSwapBuffers();
@@ -29,6 +32,8 @@ GLvoid Reshape(int w, int h)
 void InitBuffer(void)
 {
 	InitCoordBuffer();
+
+	InitFrameBuffer();
 }
 
 //키보드 입력 콜백함수
