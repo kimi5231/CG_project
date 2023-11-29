@@ -35,6 +35,12 @@
     <ClCompile Include="blockframe.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="blockcreate.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="blockdelect.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header.h">
