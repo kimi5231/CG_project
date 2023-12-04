@@ -36,3 +36,18 @@ void drawCoord(void);
 void InitFrameBuffer(void);
 // Frame 그리기
 void drawFrame(void);
+//블록 정보 초기화
+void InitBlockInformation(void);
+//블록 버퍼 초기화
+void InitBlockBuffer(void);
+//블록 그리기
+void drawBlock(float, float);
+
+//블록 구조체
+typedef struct Block
+{
+	//GLfloat pos[72];
+	GLfloat transX;
+	GLfloat transY;
+	char type;
+}Block;

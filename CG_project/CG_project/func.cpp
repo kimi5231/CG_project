@@ -3,6 +3,9 @@
 //셰이터 프로그램 객체
 extern GLuint shaderProgramID;
 
+//block
+Block block[7][7];
+
 //그리기 콜백 함수
 GLvoid Display(GLvoid)
 {
@@ -16,6 +19,14 @@ GLvoid Display(GLvoid)
 
 	// Frame 그리기
 	drawFrame();
+
+	//블록 그리기
+	for (int i = 0; i < 7; i++)
+	{
+		for (int j = 0; j < 7; j++)
+			drawBlock(block[i][j].transX, block[i][j].transY);
+	}
+	
 	
 	//화면에 출력하기
 	glutSwapBuffers();
@@ -34,6 +45,8 @@ void InitBuffer(void)
 	InitCoordBuffer();
 
 	InitFrameBuffer();
+
+	InitBlockBuffer();
 }
 
 //키보드 입력 콜백함수

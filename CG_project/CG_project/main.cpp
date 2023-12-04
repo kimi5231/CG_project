@@ -15,7 +15,7 @@ void main(int argc, char** argv)
 	//윈도우 크기 지정
 	glutInitWindowSize(600, 600);
 	//윈도우 생성 및 이름 지정
-	glutCreateWindow("실습1-18");
+	glutCreateWindow("AniPang");
 
 	//GLEW 초기화
 	glewExperimental = GL_TRUE;
@@ -32,6 +32,8 @@ void main(int argc, char** argv)
 
 	//셰이더 프로그램 생성
 	shaderProgramID = MakeShaderProgram();
+
+	InitBlock();
 
 	//버퍼 초기화
 	InitBuffer();
