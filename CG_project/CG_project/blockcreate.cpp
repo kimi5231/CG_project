@@ -87,6 +87,7 @@ void InitBlockInformation(void)
 		{
 			block[i][j].transX = j * 0.2;
 			block[i][j].transY = i * -0.2;
+			block[i][j].type = rand() % 7 + 1;
 		}
 	}
 }

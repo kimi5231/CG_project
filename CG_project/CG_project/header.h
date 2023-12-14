@@ -1,6 +1,8 @@
 #pragma once
 #define _CRT_SECURE_NO_WARNINGS 
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 #include <iostream>
 #include <gl/glew.h>
 #include <gl/freeglut.h>

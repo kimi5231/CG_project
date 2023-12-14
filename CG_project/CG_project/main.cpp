@@ -27,6 +27,9 @@ void main(int argc, char** argv)
 	else
 		printf("GLEW Initialized\n");
 
+	//랜덤 설정
+	srand(time(NULL));
+
 	//은면 제거
 	glEnable(GL_DEPTH_TEST);
 
