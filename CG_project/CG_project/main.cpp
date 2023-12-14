@@ -33,7 +33,7 @@ void main(int argc, char** argv)
 	//셰이더 프로그램 생성
 	shaderProgramID = MakeShaderProgram();
 
-	InitBlock();
+	//InitBlock();
 
 	//버퍼 초기화
 	InitBuffer();

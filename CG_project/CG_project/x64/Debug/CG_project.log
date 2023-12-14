@@ -1,3 +1,2 @@
-﻿  func.cpp
-C:\CG_project\CG_project\CG_project\func.cpp(58,2): warning C4065: switch문에 'default'가 있으나 'case' 레이블이 없습니다.
-  CG_project.vcxproj -> C:\CG_project\CG_project\x64\Debug\CG_project.exe
+﻿  blockframe.cpp
+  CG_project.vcxproj -> C:\2022182024\CG_project\CG_project\x64\Debug\CG_project.exe
