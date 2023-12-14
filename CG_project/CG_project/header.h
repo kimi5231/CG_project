@@ -50,4 +50,5 @@ typedef struct Block
 	GLfloat transX;
 	GLfloat transY;
 	char type;
+	bool special;
 }Block;
