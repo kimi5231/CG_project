@@ -8,6 +8,10 @@ extern BlockSeat blockseat[7][7];
 extern Block block[7][7];
 
 int count = 0;
+int i = 6;
+
+bool make = true;
+bool del = false;
 
 //그리기 콜백 함수
 GLvoid Display(GLvoid)
@@ -70,15 +74,32 @@ void Keyboard(unsigned char key, int x, int y)
 //타이머 콜백함수
 void Timer(int value)
 {
+	if (make)
+	{
+		CheckEmptySeat(i);
+		if (i == 0)
+		{
+			make = false;
+			del = true;
+			i = 6;
+		}
+		i--;
+	}
+
+	if (del)
+	{
+		CheckDelBlock();
+	}
+
 	if (count == 5)
 	{
-		CheckEmptySeat();
+		
 		count = 0;
 	}
-		
-	count++;
 
 	MoveBlock();
+
+	count++;
 
 	//타이머 함수 재호출
 	glutTimerFunc(10, Timer, 1);

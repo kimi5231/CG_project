@@ -45,9 +45,12 @@ void InitBlockBuffer(void);
 //블록 그리기
 void drawBlock(float, float);
 
-void CheckEmptySeat(void);
-void MakeBlock(int i, int j);
+void CheckEmptySeat(int);
+void MakeBlock(int, int);
 void MoveBlock(void);
+
+void CheckDelBlock(void);
+void DelBlock(int i, int j);
 
 //블록 구조체
 typedef struct Block
@@ -57,6 +60,7 @@ typedef struct Block
 	GLfloat transY;
 	int type;
 	int special;
+	bool del;
 }Block;
 
 typedef struct BlockSeat

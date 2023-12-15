@@ -1,6 +1,6 @@
 #include "header.h"
 
-//셰이터 프로그램 객체
+//셰이더 프로그램 객체
 extern GLuint shaderProgramID;
 
 // Block VAO, VBO
@@ -15,6 +15,8 @@ extern glm::mat4 model;
 BlockSeat blockseat[7][7];
 
 Block block[7][7];
+
+int blockcount = 0;
 
 const GLfloat blockPos[] = {
 	-0.5f, 0.7f, -0.1f,
@@ -159,17 +161,13 @@ void drawBlock(float x, float y)
 }
 
 //블록 자리가 비어있는지 확인
-void CheckEmptySeat(void)
+void CheckEmptySeat(int i)
 {
-	for (int i = 0; i < 7; i++)
+	for (int j = 6; j >= 0; j--)
 	{
-		for (int j = 0; j < 7; j++)
+		if (blockseat[i][j].fill == false)
 		{
-			if (blockseat[i][j].fill == false)
-			{
-				MakeBlock(i, j);
-				return;
-			}
+			MakeBlock(i, j);
 		}
 	}
 }
@@ -178,7 +176,7 @@ void CheckEmptySeat(void)
 void MakeBlock(int i, int j)
 {
 	block[i][j].transY = 0.2;
-	block[i][j].type = rand() % 7 + 1;
+	block[i][j].type = rand() % 2 + 1;
 	block[i][j].special = rand() % 2 + 1;
 	blockseat[i][j].fill = true;
 }
@@ -192,12 +190,45 @@ void MoveBlock(void)
 		{
 			if (blockseat[i][j].fill && block[i][j].transY > blockseat[i][j].transY)
 				block[i][j].transY -= 0.01;
+			else
+				block[i][j].transY = blockseat[i][j].transY;
+		}
+	}
+}
+
+//파괴될 블록 확인
+void CheckDelBlock(void)
+{
+	for (int k = 1; k < 8; k++)
+	{
+		for (int i = 0; i < 7; i++)
+		{
+			for (int j = 0; j < 7; j++)
+			{
+				if (block[i][j].type == k && blockcount == 0)
+					blockcount++;
+				else if (block[i][j].type == k && block[i][j - 1].type == k)
+					blockcount++;
+				else
+					blockcount = 0;
+			}
+
+			if (blockcount >= 3)
+			{
+				for (int j = 0; j < 7; j++)
+				{
+					if (block[i][j].type == k)
+						DelBlock(i, j);
+				}
+			}
+
+			blockcount = 0;
 		}
 	}
 }
 
 //블록 파괴
-void DelBlock(void)
+void DelBlock(int i, int j)
 {
-
+	blockseat[i][j].fill = false;
 }
