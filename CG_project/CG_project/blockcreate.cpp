@@ -16,7 +16,11 @@ BlockSeat blockseat[7][7];
 
 Block block[7][7];
 
+int save_block_inform[7];
 int blockcount = 0;
+
+extern bool make;
+extern bool del;
 
 const GLfloat blockPos[] = {
 	-0.5f, 0.7f, -0.1f,
@@ -167,6 +171,16 @@ void CheckEmptySeat(int i)
 	{
 		if (blockseat[i][j].fill == false)
 		{
+			for (int k = i - 1; k >= 0; k--)
+			{
+				if (blockseat[k][j].fill == true)
+				{
+					block[i][j] = block[k][j];
+					blockseat[k][j].fill = false;
+					blockseat[i][j].fill = true;
+					return;
+				}
+			}
 			MakeBlock(i, j);
 		}
 	}
@@ -177,7 +191,7 @@ void MakeBlock(int i, int j)
 {
 	block[i][j].transY = 0.2;
 	block[i][j].type = rand() % 2 + 1;
-	block[i][j].special = rand() % 2 + 1;
+	block[i][j].special = 1;
 	blockseat[i][j].fill = true;
 }
 
@@ -194,6 +208,18 @@ void MoveBlock(void)
 				block[i][j].transY = blockseat[i][j].transY;
 		}
 	}
+
+	for (int i = 0; i < 7; i++)
+	{
+		for (int j = 0; j < 7; j++)
+		{
+			if (blockseat[i][j].fill && block[i][j].transY != blockseat[i][j].transY)
+				return;
+		}
+	}
+
+	make = false;
+	del = true;
 }
 
 //파괴될 블록 확인
@@ -206,19 +232,37 @@ void CheckDelBlock(void)
 			for (int j = 0; j < 7; j++)
 			{
 				if (block[i][j].type == k && blockcount == 0)
+				{
+					save_block_inform[blockcount] = j;
 					blockcount++;
+				}
 				else if (block[i][j].type == k && block[i][j - 1].type == k)
+				{
+					save_block_inform[blockcount] = j;
 					blockcount++;
-				else
+				}
+				else if (block[i][j].type != k && blockcount < 3)
 					blockcount = 0;
+				else if (block[i][j].type != k && blockcount == 3)
+				{
+					if (block[i][j + 1].type == k && block[i][j + 2].type == k && block[i][j + 3].type == k)
+					{
+						for (int l = 0; l < 3; l++)
+						{
+							blockcount ++;
+							save_block_inform[blockcount] = j;
+						}
+					}
+					break;
+				}
 			}
 
 			if (blockcount >= 3)
 			{
-				for (int j = 0; j < 7; j++)
+				for (int j = 0; j < blockcount; j++)
 				{
-					if (block[i][j].type == k)
-						DelBlock(i, j);
+					if (block[i][save_block_inform[j]].type == k)
+						DelBlock(i, save_block_inform[j]);
 				}
 			}
 

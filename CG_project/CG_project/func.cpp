@@ -8,7 +8,7 @@ extern BlockSeat blockseat[7][7];
 extern Block block[7][7];
 
 int count = 0;
-int i = 6;
+int i = 7;
 
 bool make = true;
 bool del = false;
@@ -78,28 +78,17 @@ void Timer(int value)
 	{
 		CheckEmptySeat(i);
 		if (i == 0)
-		{
-			make = false;
-			del = true;
-			i = 6;
-		}
+			i = 7;
 		i--;
+		MoveBlock();
 	}
 
 	if (del)
 	{
 		CheckDelBlock();
+		del = false;
+		make = true;
 	}
-
-	if (count == 5)
-	{
-		
-		count = 0;
-	}
-
-	MoveBlock();
-
-	count++;
 
 	//타이머 함수 재호출
 	glutTimerFunc(10, Timer, 1);
