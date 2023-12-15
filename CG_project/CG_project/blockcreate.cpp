@@ -12,7 +12,9 @@ GLuint VBO_block_color;
 extern glm::mat4 model;
 
 //block
-extern Block block[7][7];
+BlockSeat blockseat[7][7];
+
+Block block[7][7];
 
 const GLfloat blockPos[] = {
 	-0.5f, 0.7f, -0.1f,
@@ -78,16 +80,19 @@ const float blockColor[] = {
 	1.0f, 0.0f, 1.0f
 };
 
-//블록 정보 조기화
+//블록 정보 초기화
 void InitBlockInformation(void)
 {
 	for (int i = 0; i < 7; i++)
 	{
 		for (int j = 0; j < 7; j++)
 		{
+			blockseat[i][j].transX = j * 0.2;
+			blockseat[i][j].transY = i * -0.2;
+			blockseat[i][j].fill = false;
 			block[i][j].transX = j * 0.2;
-			block[i][j].transY = i * -0.2;
-			block[i][j].type = rand() % 7 + 1;
+			//block[i][j].transY = i * -0.2;
+			
 		}
 	}
 }
@@ -151,4 +156,48 @@ void drawBlock(float x, float y)
 		glDrawArrays(GL_TRIANGLES, i, 3);
 		glDrawArrays(GL_TRIANGLES, i + 1, 3);
 	}
+}
+
+//블록 자리가 비어있는지 확인
+void CheckEmptySeat(void)
+{
+	for (int i = 0; i < 7; i++)
+	{
+		for (int j = 0; j < 7; j++)
+		{
+			if (blockseat[i][j].fill == false)
+			{
+				MakeBlock(i, j);
+				return;
+			}
+		}
+	}
+}
+
+//블록 생성
+void MakeBlock(int i, int j)
+{
+	block[i][j].transY = 0.2;
+	block[i][j].type = rand() % 7 + 1;
+	block[i][j].special = rand() % 2 + 1;
+	blockseat[i][j].fill = true;
+}
+
+//블록 이동
+void MoveBlock(void)
+{
+	for (int i = 0; i < 7; i++)
+	{
+		for (int j = 0; j < 7; j++)
+		{
+			if (blockseat[i][j].fill && block[i][j].transY > blockseat[i][j].transY)
+				block[i][j].transY -= 0.01;
+		}
+	}
+}
+
+//블록 파괴
+void DelBlock(void)
+{
+
 }

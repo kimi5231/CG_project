@@ -133,8 +133,8 @@
     <None Include="vertex.glsl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="block.cpp" />
     <ClCompile Include="blockcreate.cpp" />
-    <ClCompile Include="blockdelect.cpp" />
     <ClCompile Include="blockframe.cpp" />
     <ClCompile Include="blockPos.cpp" />
     <ClCompile Include="func.cpp" />

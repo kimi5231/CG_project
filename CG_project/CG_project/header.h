@@ -45,12 +45,23 @@ void InitBlockBuffer(void);
 //블록 그리기
 void drawBlock(float, float);
 
+void CheckEmptySeat(void);
+void MakeBlock(int i, int j);
+void MoveBlock(void);
+
 //블록 구조체
 typedef struct Block
 {
 	//GLfloat pos[72];
 	GLfloat transX;
 	GLfloat transY;
-	char type;
-	bool special;
+	int type;
+	int special;
 }Block;
+
+typedef struct BlockSeat
+{
+	GLfloat transX;
+	GLfloat transY;
+	bool fill;
+}BlockSeat;
