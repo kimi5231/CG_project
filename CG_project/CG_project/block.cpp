@@ -3,10 +3,15 @@
 //셰이더 프로그램 객체
 extern GLuint shaderProgramID;
 
-// Block VAO, VBO
+//block VAO, VBO
 GLuint VAO_block;
 GLuint VBO_block_position;
 GLuint VBO_block_color;
+
+//select VAO, VBO
+GLuint VAO_select;
+GLuint VBO_select_position;
+GLuint VBO_select_color;
 
 //변환 행렬
 extern glm::mat4 model;
@@ -279,6 +284,35 @@ const float blockColor7[] = {
 	1.0f, 0.0f, 1.0f,
 	1.0f, 0.0f, 1.0f
 };
+
+//select
+const GLfloat selectPos[] = {
+	-0.5f, 0.7f, -0.15f,
+	-0.5f, 0.5f, -0.15f,
+
+	-0.5f, 0.7f, -0.15f,
+	-0.7f, 0.7f, -0.15f,
+
+	-0.5f, 0.5f, -0.15f,
+	-0.7f, 0.5f, -0.15f,
+
+	-0.7f, 0.7f, -0.15f,
+	-0.7f, 0.5f, -0.15f
+};
+
+const float selectColor[] = {
+	0.0f, 0.0f, 0.0f,
+	0.0f, 0.0f, 0.0f,
+	0.0f, 0.0f, 0.0f,
+	0.0f, 0.0f, 0.0f,
+	0.0f, 0.0f, 0.0f,
+	0.0f, 0.0f, 0.0f,
+	0.0f, 0.0f, 0.0f,
+	0.0f, 0.0f, 0.0f
+};
+
+GLfloat transX_select = 0.0f;
+GLfloat transY_select = 0.0f;
 
 //블록 및 블록 자리 정보 초기화
 void InitBlockInformation(void)
@@ -566,4 +600,82 @@ void CheckDelBlock(void)
 void DelBlock(int i, int j)
 {
 	blockseat[i][j].fill = false;
+}
+
+//선택 인터페이스 버퍼 초기화
+void InitSelectBuffer(void)
+{
+	//VAO 객체 생성 및 바인딩
+	glGenVertexArrays(1, &VAO_select);
+	glBindVertexArray(VAO_select);
+
+	//버텍스 위치 VBO 객체 생성
+	glGenBuffers(1, &VBO_select_position);
+
+	//버텍스 위치 VBO 객체 바인딩
+	glBindBuffer(GL_ARRAY_BUFFER, VBO_select_position);
+	//버텍스 위치 데이터 입력
+	glBufferData(GL_ARRAY_BUFFER, sizeof(selectPos), selectPos, GL_STATIC_DRAW);
+	//버텍스 위치 데이터 배열 정의
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+	//버텍스 위치 배열 사용
+	glEnableVertexAttribArray(0);
+
+	//버텍스 색상 VBO 객체 생성
+	glGenBuffers(1, &VBO_select_color);
+
+	//버텍스 색상 VBO 객체 바인딩
+	glBindBuffer(GL_ARRAY_BUFFER, VBO_select_color);
+	//버텍스 색상 데이터 입력
+	glBufferData(GL_ARRAY_BUFFER, sizeof(selectColor), selectColor, GL_STATIC_DRAW);
+	//버텍스 색상 데이터 배열 정의
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+	//버텍스 색상 배열 사용
+	glEnableVertexAttribArray(1);
+}
+
+//선택 인터페이스 그리기
+void drawSelect(void)
+{
+	//사용할 셰이더 프로그램 지정
+	glUseProgram(shaderProgramID);
+
+	//변환 행렬 단위 행렬로 초기화
+	model = glm::mat4(1.0f);
+	//x축을 기준으로 -30도만큼 회전
+	model = glm::rotate(model, glm::radians(-30.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+	//y축을 기준으로 -30도만큼 회전
+	model = glm::rotate(model, glm::radians(-30.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+	//0.9 크기로 스케일
+	model = glm::scale(model, glm::vec3(0.9f, 0.9f, 0.9f));
+	//이동
+	model = glm::translate(model, glm::vec3(transX_select, transY_select, 0.0f));
+	//변환 행렬 적용하기
+	glUniformMatrix4fv(glGetUniformLocation(shaderProgramID, "model"), 1, GL_FALSE, glm::value_ptr(model));
+
+	// 원근 투영변환
+	glm::mat4 projection = glm::mat4(1.0f);
+	projection = glm::perspective(glm::radians(45.0f), 1.0f, 0.1f, 100.0f);
+	projection = glm::translate(projection, glm::vec3(0.0, 0.0, -2.0));
+
+	unsigned int projectionLocation = glGetUniformLocation(shaderProgramID, "projectionTransform");
+	glUniformMatrix4fv(projectionLocation, 1, GL_FALSE, &projection[0][0]);
+
+	// 카메라 위치
+	glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, -1.0f);
+	// 카메라 바라보는 방향
+	glm::vec3 cameraDirection = glm::vec3(0.0f, 0.0f, 1.0f);
+	// 카메라 위쪽 방향
+	glm::vec3 camerUp = glm::vec3(0.0f, 1.0f, 0.0f);
+	glm::mat4 view = glm::mat4(1.0f);
+
+	view = glm::lookAt(cameraPos, cameraDirection, camerUp);
+	// 뷰잉 변환 설정
+	unsigned int viewLocation = glGetUniformLocation(shaderProgramID, "viewTransform");
+	glUniformMatrix4fv(viewLocation, 1, GL_FALSE, &view[0][0]);
+
+	//사용할 VAO 객체 바인딩
+	glBindVertexArray(VAO_select);
+	//선택 인터페이스 그리기
+	glDrawArrays(GL_LINES, 0, 8);
 }

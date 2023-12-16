@@ -46,6 +46,7 @@ void main(int argc, char** argv)
 	glutDisplayFunc(Display);
 	glutReshapeFunc(Reshape);
 	glutKeyboardFunc(Keyboard);
+	glutSpecialFunc(SpecialKeyboard);
 	glutTimerFunc(10, Timer, 1);
 	//이벤트 처리 시작
 	glutMainLoop();

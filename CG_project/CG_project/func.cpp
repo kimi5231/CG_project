@@ -13,6 +13,10 @@ int i = 7;
 bool make = true;
 bool del = false;
 
+//select
+extern GLfloat transX_select;
+extern GLfloat transY_select;
+
 //그리기 콜백 함수
 GLvoid Display(GLvoid)
 {
@@ -39,6 +43,8 @@ GLvoid Display(GLvoid)
 			}
 		}
 	}
+
+	drawSelect();
 	
 	//화면에 출력하기
 	glutSwapBuffers();
@@ -57,6 +63,8 @@ void InitBuffer(void)
 	InitCoordBuffer();
 
 	InitFrameBuffer();
+
+	InitSelectBuffer();
 }
 
 //키보드 입력 콜백함수
@@ -64,6 +72,34 @@ void Keyboard(unsigned char key, int x, int y)
 {
 	switch (key)
 	{
+	default:
+		break;
+	}
+
+	//그리기 콜백함수 재호출
+	glutPostRedisplay();
+}
+
+//특수키 입력 콜백함수
+void SpecialKeyboard(int key, int x, int y)
+{
+	switch (key)
+	{
+	case GLUT_KEY_RIGHT:
+		transX_select -= 0.2f;
+		break;
+	case GLUT_KEY_LEFT:
+		transX_select += 0.2f;
+		break;
+	case GLUT_KEY_UP:
+		transY_select += 0.2f;
+		break;
+	case GLUT_KEY_DOWN:
+		transY_select -= 0.2f;
+		break;
+	case GLUT_KEY_F1:
+		transY_select -= 0.2f;
+		break;
 	default:
 		break;
 	}

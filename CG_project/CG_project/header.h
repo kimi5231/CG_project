@@ -17,6 +17,8 @@ GLvoid Display(GLvoid);
 GLvoid Reshape(int, int);
 //키보드 입력 콜백함수
 void Keyboard(unsigned char, int, int);
+//특수키 입력 콜백함수
+void SpecialKeyboard(int, int, int);
 //타이머 콜백함수
 void Timer(int);
 
@@ -51,6 +53,11 @@ void MoveBlock(void);
 
 void CheckDelBlock(void);
 void DelBlock(int i, int j);
+
+//선택 인터페이스 버퍼 초기화
+void InitSelectBuffer(void);
+//선택 인터페이스 그리기
+void drawSelect(void);
 
 //블록 구조체
 typedef struct Block
