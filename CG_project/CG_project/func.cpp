@@ -143,8 +143,12 @@ void Timer(int value)
 
 	if (select_block_count == 2)
 	{
-		
+		Block temp = block[save_select_block_inform[0][0]][save_select_block_inform[0][1]];
+		block[save_select_block_inform[0][0]][save_select_block_inform[0][1]] = block[save_select_block_inform[1][0]][save_select_block_inform[1][1]];
+		block[save_select_block_inform[1][0]][save_select_block_inform[1][1]] = temp;
 		select_block_count = 0;
+		del = true;
+		make = false;
 	}
 
 	//타이머 함수 재호출
