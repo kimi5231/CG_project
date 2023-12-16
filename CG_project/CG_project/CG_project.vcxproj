@@ -135,8 +135,7 @@
   <ItemGroup>
     <ClCompile Include="block.cpp" />
     <ClCompile Include="blockframe.cpp" />
-    <ClCompile Include="blockPos.cpp" />
-    <ClCompile Include="camera.cpp" />
+    <ClCompile Include="transform.cpp" />
     <ClCompile Include="func.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="shader.cpp" />

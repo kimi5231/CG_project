@@ -59,6 +59,8 @@ void InitSelectBuffer(void);
 //선택 인터페이스 그리기
 void drawSelect(void);
 
+void VeiwAndProjectionTransform(void);
+
 //블록 구조체
 typedef struct Block
 {

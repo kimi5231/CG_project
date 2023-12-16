@@ -17,6 +17,9 @@ bool del = false;
 extern GLfloat transX_select;
 extern GLfloat transY_select;
 
+extern int save_select_block_inform[2][2];
+int select_block_count = 0;
+
 //그리기 콜백 함수
 GLvoid Display(GLvoid)
 {
@@ -98,7 +101,18 @@ void SpecialKeyboard(int key, int x, int y)
 		transY_select -= 0.2f;
 		break;
 	case GLUT_KEY_F1:
-		transY_select -= 0.2f;
+		for (int i = 0; i < 7; i++)
+		{
+			for (int j = 0; j < 7; j++)
+			{
+				if (blockseat[i][j].transX == transX_select && blockseat[i][j].transY == transY_select)
+				{
+					save_select_block_inform[select_block_count][0] = i;
+					save_select_block_inform[select_block_count][1] = j;
+				}
+			}
+		}
+		select_block_count++;
 		break;
 	default:
 		break;
@@ -125,6 +139,12 @@ void Timer(int value)
 		CheckDelBlock();
 		del = false;
 		make = true;
+	}
+
+	if (select_block_count == 2)
+	{
+		
+		select_block_count = 0;
 	}
 
 	//타이머 함수 재호출

@@ -38,10 +38,7 @@
     <ClCompile Include="block.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="blockPos.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="camera.cpp">
+    <ClCompile Include="transform.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
