@@ -35,13 +35,10 @@
     <ClCompile Include="blockframe.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="blockcreate.cpp">
+    <ClCompile Include="block.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="blockPos.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="block.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

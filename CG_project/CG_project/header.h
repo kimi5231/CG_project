@@ -41,7 +41,7 @@ void drawFrame(void);
 //블록 정보 초기화
 void InitBlockInformation(void);
 //블록 버퍼 초기화
-void InitBlockBuffer(void);
+void InitBlockBuffer(int, int);
 //블록 그리기
 void drawBlock(float, float);
 
@@ -55,7 +55,7 @@ void DelBlock(int i, int j);
 //블록 구조체
 typedef struct Block
 {
-	//GLfloat pos[72];
+	float texture[72];
 	GLfloat transX;
 	GLfloat transY;
 	int type;

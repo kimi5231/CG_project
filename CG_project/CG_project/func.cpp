@@ -32,8 +32,11 @@ GLvoid Display(GLvoid)
 	{
 		for (int j = 0; j < 7; j++)
 		{
-			if(blockseat[i][j].fill)
+			if (blockseat[i][j].fill)
+			{
+				InitBlockBuffer(i, j);
 				drawBlock(block[i][j].transX, block[i][j].transY);
+			}
 		}
 	}
 	
@@ -54,8 +57,6 @@ void InitBuffer(void)
 	InitCoordBuffer();
 
 	InitFrameBuffer();
-
-	InitBlockBuffer();
 }
 
 //키보드 입력 콜백함수
