@@ -146,6 +146,12 @@ void Timer(int value)
 		Block temp = block[save_select_block_inform[0][0]][save_select_block_inform[0][1]];
 		block[save_select_block_inform[0][0]][save_select_block_inform[0][1]] = block[save_select_block_inform[1][0]][save_select_block_inform[1][1]];
 		block[save_select_block_inform[1][0]][save_select_block_inform[1][1]] = temp;
+		temp.transX = block[save_select_block_inform[0][0]][save_select_block_inform[0][1]].transX;
+		temp.transY = block[save_select_block_inform[0][0]][save_select_block_inform[0][1]].transY;
+		block[save_select_block_inform[0][0]][save_select_block_inform[0][1]].transX = block[save_select_block_inform[1][0]][save_select_block_inform[1][1]].transX;
+		block[save_select_block_inform[0][0]][save_select_block_inform[0][1]].transY = block[save_select_block_inform[1][0]][save_select_block_inform[1][1]].transY;
+		block[save_select_block_inform[1][0]][save_select_block_inform[1][1]].transX = temp.transX;
+		block[save_select_block_inform[1][0]][save_select_block_inform[1][1]].transY = temp.transY;
 		select_block_count = 0;
 		del = true;
 		make = false;
