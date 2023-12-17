@@ -80,7 +80,22 @@ void Keyboard(unsigned char key, int x, int y)
 	switch (key)
 	{
 	case 'a':
-		break;
+		for (int i = 0; i < 7; i++)
+		{
+			for (int j = 0; j < 7; j++)
+			{
+				if (select.x == i && select.y == j)
+				{
+					select.i[select.count] = i;
+					select.j[select.count++] = j;
+					if (select.count == 2)
+					{
+						ChangeBlock();
+						break;
+					}
+				}
+			}
+		}
 	default:
 		break;
 	}
@@ -106,24 +121,6 @@ void SpecialKeyboard(int key, int x, int y)
 	case GLUT_KEY_DOWN:
 		select.x++;
 		break;
-	case GLUT_KEY_F1:
-		for (int i = 0; i < 7; i++)
-		{
-			for (int j = 0; j < 7; j++)
-			{
-				if (select.x == i && select.y == j)
-				{
-					select.i[select.count] = i;
-					select.j[select.count++] = j;
-					if (select.count == 2)
-					{
-						ChangeBlock();
-						break;
-					}
-						
-				}
-			}
-		}
 	default:
 		break;
 	}
