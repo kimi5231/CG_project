@@ -11,6 +11,7 @@ int count = 7;
 
 bool make = true;
 bool del = false;
+bool start = true;
 
 //select
 extern Select select;
@@ -22,10 +23,6 @@ extern Effect effect[7][7][8];
 
 // 카메라 각도
 extern GLfloat cam_radiansY;
-extern GLfloat cam_radiansX;
-
-extern GLfloat cam_x;
-extern GLfloat cam_y;
 
 //그리기 콜백 함수
 GLvoid Display(GLvoid)
@@ -110,6 +107,10 @@ void Keyboard(unsigned char key, int x, int y)
 	case 'a':
 		SelectBlock();
 		break;
+	case 's':
+		start = false;
+		cam_radiansY = -0.0f;
+		break;
 	default:
 		break;
 	}
@@ -150,12 +151,8 @@ void SpecialKeyboard(int key, int x, int y)
 //타이머 콜백함수
 void Timer(int value)
 {
-	cam_radiansY += 1.0f;
-
-	cam_x += 0.1f;
-	cam_y += 0.1f;
-
-	//Play();
+	if (start)
+		cam_radiansY += 1.0f;
 
 	if (make)
 	{
