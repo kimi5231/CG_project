@@ -140,9 +140,3 @@ typedef struct Effect
 	bool show;
 	int time;
 }Effect;
-
-typedef struct Turn
-{
-
-	int count;
-}Turn;

@@ -111,6 +111,9 @@ void Keyboard(unsigned char key, int x, int y)
 		start = false;
 		cam_radiansY = -0.0f;
 		break;
+	case 'q':
+		glutLeaveMainLoop();
+		break;
 	default:
 		break;
 	}
