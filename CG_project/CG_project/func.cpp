@@ -28,7 +28,7 @@ extern GLfloat cam_y;
 GLvoid Display(GLvoid)
 {
 	//초기 색깔 지정
-	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	//설정된 색으로 전체 칠하기
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -51,6 +51,7 @@ GLvoid Display(GLvoid)
 		}
 	}
 
+	//선택 인터페이스 그리기
 	drawSelect();
 	
 	//화면에 출력하기
@@ -68,9 +69,9 @@ GLvoid Reshape(int w, int h)
 void InitBuffer(void)
 {
 	InitCoordBuffer();
-
+	// init frame
 	InitFrameBuffer();
-
+	// init select interface
 	InitSelectBuffer();
 }
 
@@ -80,7 +81,23 @@ void Keyboard(unsigned char key, int x, int y)
 	switch (key)
 	{
 	case 'a':
-		break;
+		for (int i = 0; i < 7; i++)
+		{
+			for (int j = 0; j < 7; j++)
+			{
+				if (select.x == i && select.y == j)
+				{
+					select.i[select.count] = i;
+					select.j[select.count++] = j;
+					if (select.count == 2)
+					{
+						ChangeBlock();
+						break;
+					}
+
+				}
+			}
+		}
 	default:
 		break;
 	}
@@ -106,24 +123,6 @@ void SpecialKeyboard(int key, int x, int y)
 	case GLUT_KEY_DOWN:
 		select.x++;
 		break;
-	case GLUT_KEY_F1:
-		for (int i = 0; i < 7; i++)
-		{
-			for (int j = 0; j < 7; j++)
-			{
-				if (select.x == i && select.y == j)
-				{
-					select.i[select.count] = i;
-					select.j[select.count++] = j;
-					if (select.count == 2)
-					{
-						ChangeBlock();
-						break;
-					}
-						
-				}
-			}
-		}
 	default:
 		break;
 	}
