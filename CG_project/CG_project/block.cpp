@@ -857,10 +857,7 @@ void CheckDelBlock(void)
 void DelBlock(int i, int j)
 {
 	blockseat[i][j].fill = false;
-	/*if (block[i][j].special == 2)
-		CrashBoomPang(i, j);
-	else if (block[i][j].special == 3)
-		CrashRandomPang(i, j);*/
+	MakeEffect(i, j);
 }
 
 //선택 인터페이스 버퍼 초기화

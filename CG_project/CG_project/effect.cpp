@@ -208,7 +208,7 @@ void MoveEffect(int i, int j)
 	for (int t = 0; t < 8; t++)
 	{
 		effect[i][j][t].time++;
-		if (effect[i][j][t].time == 11)
+		if (effect[i][j][t].time == 800)
 			DelEffect(i, j);
 	}
 }
@@ -216,5 +216,12 @@ void MoveEffect(int i, int j)
 //ÀÌÆåÆ® Á¦°Å
 void DelEffect(int i, int j)
 {
-	
+	for (int k = 0; k < 8; k++)
+	{
+		effect[i][j][k].transX = effect[i][j][k].transX_origin;
+		effect[i][j][k].transY = effect[i][j][k].transY_origin;
+		effect[i][j][k].transZ = effect[i][j][k].transZ_origin;
+		effect[i][j][k].show = false;
+		effect[i][j][k].time = 0;
+	}
 }

@@ -132,6 +132,7 @@ typedef struct Effect
 	float transX;
 	float transY;
 	float transZ;
+	float radians;
 	bool show;
 	int time;
 }Effect;

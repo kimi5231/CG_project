@@ -110,11 +110,6 @@ void Keyboard(unsigned char key, int x, int y)
 	case 'a':
 		SelectBlock();
 		break;
-	case 's':
-		MakeEffect(0, 0);
-		MakeEffect(1, 1);
-		MakeEffect(2, 2);
-		break;
 	default:
 		break;
 	}
