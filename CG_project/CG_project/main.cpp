@@ -28,6 +28,7 @@ void main(int argc, char** argv)
 		printf("GLEW Initialized\n");
 
 	SoundSystem();
+	BgmPlay();
 
 	//·£´ý ¼³Á¤
 	srand(time(NULL));

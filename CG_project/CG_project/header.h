@@ -15,6 +15,7 @@
 
 void SoundSystem(void);
 void Play();
+void BgmPlay();
 
 //그리기 콜백함수
 GLvoid Display(GLvoid);
