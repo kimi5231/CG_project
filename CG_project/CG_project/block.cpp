@@ -856,6 +856,8 @@ void CheckDelBlock(void)
 //ºí·Ï ÆÄ±«
 void DelBlock(int i, int j)
 {
+	Play();
+
 	blockseat[i][j].fill = false;
 	MakeEffect(i, j);
 }

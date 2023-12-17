@@ -13,6 +13,9 @@
 #include "fmod.hpp"
 #include "fmod_errors.h"
 
+void SoundSystem(void);
+void Play();
+
 //그리기 콜백함수
 GLvoid Display(GLvoid);
 //크기 변경시 다시 그리기 콜백 함수

@@ -27,6 +27,8 @@ void main(int argc, char** argv)
 	else
 		printf("GLEW Initialized\n");
 
+	SoundSystem();
+
 	//·£´ý ¼³Á¤
 	srand(time(NULL));
 

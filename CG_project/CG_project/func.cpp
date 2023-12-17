@@ -155,6 +155,8 @@ void Timer(int value)
 	cam_x += 0.1f;
 	cam_y += 0.1f;
 
+	//Play();
+
 	if (make)
 	{
 		CheckEmptySeat(count);

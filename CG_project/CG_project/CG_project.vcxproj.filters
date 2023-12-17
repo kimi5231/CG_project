@@ -44,6 +44,9 @@
     <ClCompile Include="effect.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="sound_temp.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header.h">

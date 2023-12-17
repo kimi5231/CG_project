@@ -140,6 +140,7 @@
     <ClCompile Include="block.cpp" />
     <ClCompile Include="blockframe.cpp" />
     <ClCompile Include="effect.cpp" />
+    <ClCompile Include="sound_temp.cpp" />
     <ClCompile Include="transform.cpp" />
     <ClCompile Include="func.cpp" />
     <ClCompile Include="main.cpp" />
