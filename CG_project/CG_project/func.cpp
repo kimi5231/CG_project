@@ -17,6 +17,9 @@ extern Select select;
 extern GLfloat transX_select;
 extern GLfloat transY_select;
 
+//effect
+extern Effect effect[7][7][8];
+
 // 카메라 각도
 extern GLfloat cam_radiansY;
 extern GLfloat cam_radiansX;
@@ -49,6 +52,18 @@ GLvoid Display(GLvoid)
 	}
 
 	drawSelect();
+
+	for (int i = 0; i < 7; i++)
+	{
+		for (int j = 0; j < 7; j++)
+		{
+			for (int k = 0; k < 8; k++)
+			{
+				if (effect[i][j][k].show == true)
+					drawEffect(effect[i][j][k].transX, effect[i][j][k].transY, effect[i][j][k].transZ);
+			}
+		}
+	}
 	
 	//화면에 출력하기
 	glutSwapBuffers();
@@ -61,6 +76,20 @@ GLvoid Reshape(int w, int h)
 	glViewport(0, 0, w, h);
 }
 
+//초기화
+void Init(void)
+{
+	//블록 정보 초기화
+	InitBlockInformation();
+	//선택 인터페이스 초기화
+	InitSelect();
+	//이펙트 초기화
+	InitEffect();
+
+	//버퍼 초기화
+	InitBuffer();
+}
+
 //버퍼 초기화
 void InitBuffer(void)
 {
@@ -69,6 +98,8 @@ void InitBuffer(void)
 	InitFrameBuffer();
 
 	InitSelectBuffer();
+
+	InitEffectBuffer();
 }
 
 //키보드 입력 콜백함수
@@ -78,6 +109,11 @@ void Keyboard(unsigned char key, int x, int y)
 	{
 	case 'a':
 		SelectBlock();
+		break;
+	case 's':
+		MakeEffect(0, 0);
+		MakeEffect(1, 1);
+		MakeEffect(2, 2);
 		break;
 	default:
 		break;
@@ -138,6 +174,18 @@ void Timer(int value)
 		CheckDelBlock();
 		del = false;
 		make = true;
+	}
+
+	for (int i = 0; i < 7; i++)
+	{
+		for (int j = 0; j < 7; j++)
+		{
+			for (int k = 0; k < 8; k++)
+			{
+				if (effect[i][j][k].show == true)
+					MoveEffect(i, j);
+			}
+		}
 	}
 
 	//타이머 함수 재호출

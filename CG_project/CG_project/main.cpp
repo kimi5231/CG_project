@@ -36,13 +36,7 @@ void main(int argc, char** argv)
 	//셰이더 프로그램 생성
 	shaderProgramID = MakeShaderProgram();
 
-	//블록 정보 초기화
-	InitBlockInformation();
-	//선택 인터페이스 초기화
-	InitSelect();
-
-	//버퍼 초기화
-	InitBuffer();
+	Init();
 
 	//콜백함수 지정
 	glutDisplayFunc(Display);

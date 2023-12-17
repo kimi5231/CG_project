@@ -30,6 +30,8 @@ void MakeVertexShader(void);
 void MakeFragmentShader(void);
 //셰이더 프로그램 생성
 GLuint MakeShaderProgram(void);
+//초기화
+void Init(void);
 //버퍼 초기화
 void InitBuffer(void);
 //좌표축 버퍼 초기화
@@ -77,6 +79,17 @@ void CrashBoomPang(int, int);
 //랜덤팡 파괴
 void CrashRandomPang(int, int);
 
+//이펙트 초기화
+void InitEffect(void);
+//이펙트 버퍼 초기화
+void InitEffectBuffer(void);
+//이펙트 그리기
+void drawEffect(float x, float y, float z);
+//이펙트 생성
+void MakeEffect(int i, int j);
+//이펙트 이동
+void MoveEffect(int i, int j);
+
 //블록 구조체
 typedef struct Block
 {
@@ -105,3 +118,22 @@ typedef struct Select
 	int j[2];
 	int count;
 }Select;
+
+//이펙트 구조체
+typedef struct Effect
+{
+	float transX_origin;
+	float transY_origin;
+	float transZ_origin;
+	float transX;
+	float transY;
+	float transZ;
+	bool show;
+	int time;
+}Effect;
+
+typedef struct Turn
+{
+
+	int count;
+}Turn;
