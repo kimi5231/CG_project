@@ -285,6 +285,262 @@ const float blockColor7[] = {
 	1.0f, 0.0f, 1.0f
 };
 
+const float boomColor1[] = {
+	0.5f, 0.0f, 0.0f,
+	0.5f, 0.0f, 0.0f,
+	0.5f, 0.0f, 0.0f,
+	0.5f, 0.0f, 0.0f,
+
+	0.0f, 1.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,
+
+	0.0f, 0.0f, 1.0f,
+	0.0f, 0.0f, 1.0f,
+	0.0f, 0.0f, 1.0f,
+	0.0f, 0.0f, 1.0f,
+
+	1.0f, 1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,
+
+	0.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f,
+
+	1.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 1.0f
+};
+
+const float boomColor2[] = {
+	0.5f, 0.5f, 0.0f,
+	0.5f, 0.5f, 0.0f,
+	0.5f, 0.5f, 0.0f,
+	0.5f, 0.5f, 0.0f,
+
+	0.0f, 1.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,
+
+	0.0f, 0.0f, 1.0f,
+	0.0f, 0.0f, 1.0f,
+	0.0f, 0.0f, 1.0f,
+	0.0f, 0.0f, 1.0f,
+
+	1.0f, 1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,
+
+	0.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f,
+
+	1.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 1.0f
+};
+
+const float boomColor3[] = {
+	0.5f, 0.0f, 0.5f,
+	0.5f, 0.0f, 0.5f,
+	0.5f, 0.0f, 0.5f,
+	0.5f, 0.0f, 0.5f,
+
+	0.0f, 1.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,
+
+	0.0f, 0.0f, 1.0f,
+	0.0f, 0.0f, 1.0f,
+	0.0f, 0.0f, 1.0f,
+	0.0f, 0.0f, 1.0f,
+
+	1.0f, 1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,
+
+	0.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f,
+
+	1.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 1.0f
+};
+
+const float boomColor4[] = {
+	0.0f, 0.5f, 0.0f,
+	0.0f, 0.5f, 0.0f,
+	0.0f, 0.5f, 0.0f,
+	0.0f, 0.5f, 0.0f,
+
+	0.0f, 1.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,
+
+	0.0f, 0.0f, 1.0f,
+	0.0f, 0.0f, 1.0f,
+	0.0f, 0.0f, 1.0f,
+	0.0f, 0.0f, 1.0f,
+
+	1.0f, 1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,
+
+	0.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f,
+
+	1.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 1.0f
+};
+
+const float boomColor5[] = {
+	0.0f, 0.5f, 0.5f,
+	0.0f, 0.5f, 0.5f,
+	0.0f, 0.5f, 0.5f,
+	0.0f, 0.5f, 0.5f,
+
+	0.0f, 1.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,
+
+	0.0f, 0.0f, 1.0f,
+	0.0f, 0.0f, 1.0f,
+	0.0f, 0.0f, 1.0f,
+	0.0f, 0.0f, 1.0f,
+
+	1.0f, 1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,
+
+	0.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f,
+
+	1.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 1.0f
+};
+
+const float boomColor6[] = {
+	0.0f, 0.0f, 0.5f,
+	0.0f, 0.0f, 0.5f,
+	0.0f, 0.0f, 0.5f,
+	0.0f, 0.0f, 0.5f,
+
+	0.0f, 1.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,
+
+	0.0f, 0.0f, 1.0f,
+	0.0f, 0.0f, 1.0f,
+	0.0f, 0.0f, 1.0f,
+	0.0f, 0.0f, 1.0f,
+
+	1.0f, 1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,
+
+	0.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f,
+
+	1.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 1.0f
+};
+
+const float boomColor7[] = {
+	0.5f, 0.5f, 0.5f,
+	0.5f, 0.5f, 0.5f,
+	0.5f, 0.5f, 0.5f,
+	0.5f, 0.5f, 0.5f,
+
+	0.0f, 1.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,
+
+	0.0f, 0.0f, 1.0f,
+	0.0f, 0.0f, 1.0f,
+	0.0f, 0.0f, 1.0f,
+	0.0f, 0.0f, 1.0f,
+
+	1.0f, 1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,
+
+	0.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f,
+
+	1.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 1.0f
+};
+
+const float randomColor[] = {
+	0.0f, 0.0f, 0.0f,
+	0.0f, 0.0f, 0.0f,
+	0.0f, 0.0f, 0.0f,
+	0.0f, 0.0f, 0.0f,
+
+	0.0f, 1.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,
+
+	0.0f, 0.0f, 1.0f,
+	0.0f, 0.0f, 1.0f,
+	0.0f, 0.0f, 1.0f,
+	0.0f, 0.0f, 1.0f,
+
+	1.0f, 1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,
+
+	0.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f,
+
+	1.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 1.0f
+};
+
 //select
 Select select;
 
@@ -324,7 +580,6 @@ void InitBlockInformation(void)
 			blockseat[i][j].transY = i * -0.2;
 			blockseat[i][j].fill = false;
 			block[i][j].transX = j * 0.2;
-			//block[i][j].transY = i * -0.2;
 		}
 	}
 }
@@ -578,6 +833,20 @@ void CheckDelBlock(void)
 				}
 			}
 
+			//ÆøÅºÆÎ »ý¼º
+			if (Wblockcount == 4)
+				MakeBoomPang(i, save_Wblock_inform[0]);
+
+			if (Lblockcount == 4)
+				MakeBoomPang(save_Lblock_inform[0], i);
+
+			//·£´ýÆÎ »ý¼º
+			if (Wblockcount == 5)
+				MakeRandomPang(i, save_Wblock_inform[0]);
+
+			if (Lblockcount == 5)
+				MakeRandomPang(save_Lblock_inform[0], i);
+
 			Wblockcount = 0;
 			Lblockcount = 0;
 		}
@@ -588,6 +857,10 @@ void CheckDelBlock(void)
 void DelBlock(int i, int j)
 {
 	blockseat[i][j].fill = false;
+	/*if (block[i][j].special == 2)
+		CrashBoomPang(i, j);
+	else if (block[i][j].special == 3)
+		CrashRandomPang(i, j);*/
 }
 
 //¼±ÅÃ ÀÎÅÍÆäÀÌ½º ¹öÆÛ ÃÊ±âÈ­
@@ -664,4 +937,144 @@ void ChangeBlock(void)
 	select.count = 0;
 	del = true;
 	make = false;
+}
+
+//ÆøÅºÆÎ »ý¼º
+void MakeBoomPang(int i, int j)
+{
+	if (block[i][j].type == 1)
+	{
+		for (int k = 0; k < 72; k++)
+			block[i][j].texture[k] = boomColor1[k];
+	}
+	else if (block[i][j].type == 2)
+	{
+		for (int k = 0; k < 72; k++)
+			block[i][j].texture[k] = boomColor2[k];
+	}
+	else if (block[i][j].type == 3)
+	{
+		for (int k = 0; k < 72; k++)
+			block[i][j].texture[k] = boomColor3[k];
+	}
+	else if (block[i][j].type == 4)
+	{
+		for (int k = 0; k < 72; k++)
+			block[i][j].texture[k] = boomColor4[k];
+	}
+	else if (block[i][j].type == 5)
+	{
+		for (int k = 0; k < 72; k++)
+			block[i][j].texture[k] = boomColor5[k];
+	}
+	else if (block[i][j].type == 6)
+	{
+		for (int k = 0; k < 72; k++)
+			block[i][j].texture[k] = boomColor6[k];
+	}
+	else if (block[i][j].type == 7)
+	{
+		for (int k = 0; k < 72; k++)
+			block[i][j].texture[k] = boomColor7[k];
+	}
+	block[i][j].special = 2;
+	blockseat[i][j].fill = true;
+}
+
+//·£´ýÆÎ »ý¼º
+void MakeRandomPang(int i, int j)
+{
+	for (int k = 0; k < 72; k++)
+		block[i][j].texture[k] = randomColor[k];
+	block[i][j].special = 3;
+	blockseat[i][j].fill = true;
+}
+
+//ºí·Ï ¼±ÅÃ
+void SelectBlock(void)
+{
+	for (int i = 0; i < 7; i++)
+	{
+		for (int j = 0; j < 7; j++)
+		{
+			if (select.x == i && select.y == j)
+			{
+				if (block[i][j].special == 2)
+					CrashBoomPang(i, j);
+				else if (block[i][j].special == 3)
+					CrashRandomPang(i, j);
+				else
+				{
+					select.i[select.count] = i;
+					select.j[select.count++] = j;
+					if (select.count == 2)
+					{
+						ChangeBlock();
+						return;
+					}
+				}
+			}
+		}
+	}
+}
+
+//ÆøÅºÆÎ ÆÄ±«
+void CrashBoomPang(int i, int j)
+{
+	int x1 = 0, y1 = 0, x2 = 0, y2 = 0;
+
+	if (i == 0)
+	{
+		x1 = i;
+		x2 = i + 2;
+	}
+	else if (i == 7)
+	{
+		x1 = i - 1;
+		x2 = i;
+	}
+	else
+	{
+		x1 = i - 1;
+		x2 = i + 2;
+	}
+
+	if (j == 0)
+	{
+		y1 = j;
+		y2 = j + 2;
+	}
+	else if (j == 7)
+	{
+		y1 = j - 1;
+		y2 = j;
+	}
+	else
+	{
+		y1 = j - 1;
+		y2 = j + 2;
+	}
+
+	for (int k = x1; k < x2; k++)
+	{
+		for (int l = y1; l < y2; l++)
+			DelBlock(k, l);
+	}
+}
+
+//·£´ýÆÎ ÆÄ±«
+void CrashRandomPang(int x, int y)
+{
+	int type = rand() % 7 + 1;
+
+	for (int i = 0; i < 7; i++)
+	{
+		for (int j = 0; j < 7; j++)
+		{
+			if (block[i][j].type == type)
+				DelBlock(i, j);
+		}
+	}
+
+	DelBlock(x, y);
 }

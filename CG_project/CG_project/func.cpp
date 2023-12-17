@@ -28,12 +28,9 @@ extern GLfloat cam_y;
 GLvoid Display(GLvoid)
 {
 	//초기 색깔 지정
-	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	//설정된 색으로 전체 칠하기
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	//좌표축 그리기
-	drawCoord();
 
 	// Frame 그리기
 	drawFrame();
@@ -80,22 +77,8 @@ void Keyboard(unsigned char key, int x, int y)
 	switch (key)
 	{
 	case 'a':
-		for (int i = 0; i < 7; i++)
-		{
-			for (int j = 0; j < 7; j++)
-			{
-				if (select.x == i && select.y == j)
-				{
-					select.i[select.count] = i;
-					select.j[select.count++] = j;
-					if (select.count == 2)
-					{
-						ChangeBlock();
-						break;
-					}
-				}
-			}
-		}
+		SelectBlock();
+		break;
 	default:
 		break;
 	}
@@ -110,16 +93,20 @@ void SpecialKeyboard(int key, int x, int y)
 	switch (key)
 	{
 	case GLUT_KEY_RIGHT:
-		select.y--;
+		if(select.y > 0)
+			select.y--;
 		break;
 	case GLUT_KEY_LEFT:
-		select.y++;
+		if (select.y < 6)
+			select.y++;
 		break;
 	case GLUT_KEY_UP:
-		select.x--;
+		if (select.x > 0)
+			select.x--;
 		break;
 	case GLUT_KEY_DOWN:
-		select.x++;
+		if (select.x < 6)
+			select.x++;
 		break;
 	default:
 		break;

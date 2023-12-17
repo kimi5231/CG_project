@@ -60,10 +60,22 @@ void InitSelectBuffer(void);
 void drawSelect(void);
 
 void VeiwAndProjectionTransform(void);
+
+//블록 선택
+void SelectBlock(void);
 //블록 교환
 void ChangeBlock(void);
 //선택 인터페이스 초기화
 void InitSelect(void);
+
+//폭탄팡 생성
+void MakeBoomPang(int, int);
+//랜덤팡 생성
+void MakeRandomPang(int, int);
+//폭탄팡 파괴
+void CrashBoomPang(int, int);
+//랜덤팡 파괴
+void CrashRandomPang(int, int);
 
 //블록 구조체
 typedef struct Block
