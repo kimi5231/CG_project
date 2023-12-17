@@ -10,6 +10,8 @@
 #include <gl/glm/glm.hpp>
 #include <gl/glm/ext.hpp>
 #include <gl/glm/gtc/matrix_transform.hpp>
+#include "fmod.hpp"
+#include "fmod_errors.h"
 
 //그리기 콜백함수
 GLvoid Display(GLvoid);
@@ -48,6 +50,8 @@ void InitBlockInformation(void);
 void InitBlockBuffer(int, int);
 //블록 그리기
 void drawBlock(float, float);
+
+void DelEffect(int i, int j);
 
 void CheckEmptySeat(int);
 void MakeBlock(int, int);
