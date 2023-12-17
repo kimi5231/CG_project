@@ -20,11 +20,18 @@ extern GLfloat transY_select;
 extern int save_select_block_inform[2][2];
 int select_block_count = 0;
 
+// 카메라 각도
+extern GLfloat cam_radiansY;
+extern GLfloat cam_radiansX;
+
+extern GLfloat cam_x;
+extern GLfloat cam_y;
+
 //그리기 콜백 함수
 GLvoid Display(GLvoid)
 {
 	//초기 색깔 지정
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	//설정된 색으로 전체 칠하기
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -125,6 +132,11 @@ void SpecialKeyboard(int key, int x, int y)
 //타이머 콜백함수
 void Timer(int value)
 {
+	cam_radiansY += 1.0f;
+
+	cam_x += 0.1f;
+	cam_y += 0.1f;
+
 	if (make)
 	{
 		CheckEmptySeat(i);
