@@ -7,18 +7,15 @@ extern GLuint shaderProgramID;
 extern BlockSeat blockseat[7][7];
 extern Block block[7][7];
 
-int count = 0;
-int i = 7;
+int count = 7;
 
 bool make = true;
 bool del = false;
 
 //select
+extern Select select;
 extern GLfloat transX_select;
 extern GLfloat transY_select;
-
-extern int save_select_block_inform[2][2];
-int select_block_count = 0;
 
 // 카메라 각도
 extern GLfloat cam_radiansY;
@@ -82,6 +79,8 @@ void Keyboard(unsigned char key, int x, int y)
 {
 	switch (key)
 	{
+	case 'a':
+		break;
 	default:
 		break;
 	}
@@ -96,31 +95,35 @@ void SpecialKeyboard(int key, int x, int y)
 	switch (key)
 	{
 	case GLUT_KEY_RIGHT:
-		transX_select -= 0.2f;
+		select.y--;
 		break;
 	case GLUT_KEY_LEFT:
-		transX_select += 0.2f;
+		select.y++;
 		break;
 	case GLUT_KEY_UP:
-		transY_select += 0.2f;
+		select.x--;
 		break;
 	case GLUT_KEY_DOWN:
-		transY_select -= 0.2f;
+		select.x++;
 		break;
 	case GLUT_KEY_F1:
 		for (int i = 0; i < 7; i++)
 		{
 			for (int j = 0; j < 7; j++)
 			{
-				if (blockseat[i][j].transX == transX_select && blockseat[i][j].transY == transY_select)
+				if (select.x == i && select.y == j)
 				{
-					save_select_block_inform[select_block_count][0] = i;
-					save_select_block_inform[select_block_count][1] = j;
+					select.i[select.count] = i;
+					select.j[select.count++] = j;
+					if (select.count == 2)
+					{
+						ChangeBlock();
+						break;
+					}
+						
 				}
 			}
 		}
-		select_block_count++;
-		break;
 	default:
 		break;
 	}
@@ -139,10 +142,10 @@ void Timer(int value)
 
 	if (make)
 	{
-		CheckEmptySeat(i);
-		if (i == 0)
-			i = 7;
-		i--;
+		CheckEmptySeat(count);
+		if (count == 0)
+			count = 7;
+		count--;
 		MoveBlock();
 	}
 
@@ -151,22 +154,6 @@ void Timer(int value)
 		CheckDelBlock();
 		del = false;
 		make = true;
-	}
-
-	if (select_block_count == 2)
-	{
-		Block temp = block[save_select_block_inform[0][0]][save_select_block_inform[0][1]];
-		block[save_select_block_inform[0][0]][save_select_block_inform[0][1]] = block[save_select_block_inform[1][0]][save_select_block_inform[1][1]];
-		block[save_select_block_inform[1][0]][save_select_block_inform[1][1]] = temp;
-		temp.transX = block[save_select_block_inform[0][0]][save_select_block_inform[0][1]].transX;
-		temp.transY = block[save_select_block_inform[0][0]][save_select_block_inform[0][1]].transY;
-		block[save_select_block_inform[0][0]][save_select_block_inform[0][1]].transX = block[save_select_block_inform[1][0]][save_select_block_inform[1][1]].transX;
-		block[save_select_block_inform[0][0]][save_select_block_inform[0][1]].transY = block[save_select_block_inform[1][0]][save_select_block_inform[1][1]].transY;
-		block[save_select_block_inform[1][0]][save_select_block_inform[1][1]].transX = temp.transX;
-		block[save_select_block_inform[1][0]][save_select_block_inform[1][1]].transY = temp.transY;
-		select_block_count = 0;
-		del = true;
-		make = false;
 	}
 
 	//타이머 함수 재호출

@@ -286,6 +286,8 @@ const float blockColor7[] = {
 };
 
 //select
+Select select;
+
 const GLfloat selectPos[] = {
 	-0.5f, 0.7f, -0.15f,
 	-0.5f, 0.5f, -0.15f,
@@ -311,11 +313,6 @@ const float selectColor[] = {
 	0.0f, 0.0f, 0.0f
 };
 
-GLfloat transX_select = 0.0f;
-GLfloat transY_select = 0.0f;
-
-int save_select_block_inform[2][2];
-
 //블록 및 블록 자리 정보 초기화
 void InitBlockInformation(void)
 {
@@ -330,6 +327,14 @@ void InitBlockInformation(void)
 			//block[i][j].transY = i * -0.2;
 		}
 	}
+}
+
+//선택 인터페이스 초기화
+void InitSelect(void)
+{
+	select.x = 0;
+	select.y = 0;
+	select.count = 0;
 }
 
 //블록 버퍼 초기화
@@ -503,7 +508,7 @@ void CheckDelBlock(void)
 					save_Wblock_inform[Wblockcount] = j;
 					Wblockcount++;
 				}
-				else if (block[i][j].type == k && block[i][j - 1].type == k)
+				else if (j > 0 && block[i][j].type == k && block[i][j - 1].type == k)
 				{
 					save_Wblock_inform[Wblockcount] = j;
 					Wblockcount++;
@@ -532,7 +537,7 @@ void CheckDelBlock(void)
 					save_Lblock_inform[Lblockcount] = j;
 					Lblockcount++;
 				}
-				else if (block[j][i].type == k && block[j - 1][i].type == k)
+				else if (j > 0 && block[j][i].type == k && block[j - 1][i].type == k)
 				{
 					save_Lblock_inform[Lblockcount] = j;
 					Lblockcount++;
@@ -632,7 +637,7 @@ void drawSelect(void)
 	//0.9 크기로 스케일
 	model = glm::scale(model, glm::vec3(0.9f, 0.9f, 0.9f));
 	//이동
-	model = glm::translate(model, glm::vec3(transX_select, transY_select, 0.0f));
+	model = glm::translate(model, glm::vec3(blockseat[select.x][select.y].transX, blockseat[select.x][select.y].transY, 0.0f));
 	//변환 행렬 적용하기
 	glUniformMatrix4fv(glGetUniformLocation(shaderProgramID, "model"), 1, GL_FALSE, glm::value_ptr(model));
 
@@ -642,4 +647,21 @@ void drawSelect(void)
 	glBindVertexArray(VAO_select);
 	//선택 인터페이스 그리기
 	glDrawArrays(GL_LINES, 0, 8);
+}
+
+//블록 교환
+void ChangeBlock(void)
+{
+	Block temp = block[select.i[0]][select.j[0]];
+	block[select.i[0]][select.j[0]] = block[select.i[1]][select.j[1]];
+	block[select.i[1]][select.j[1]] = temp;
+	temp.transX = block[select.i[0]][select.j[0]].transX;
+	temp.transY = block[select.i[0]][select.j[0]].transY;
+	block[select.i[0]][select.j[0]].transX = block[select.i[1]][select.j[1]].transX;
+	block[select.i[0]][select.j[0]].transY = block[select.i[1]][select.j[1]].transY;
+	block[select.i[1]][select.j[1]].transX = temp.transX;
+	block[select.i[1]][select.j[1]].transY = temp.transY;
+	select.count = 0;
+	del = true;
+	make = false;
 }

@@ -38,6 +38,8 @@ void main(int argc, char** argv)
 
 	//블록 정보 초기화
 	InitBlockInformation();
+	//선택 인터페이스 초기화
+	InitSelect();
 
 	//버퍼 초기화
 	InitBuffer();

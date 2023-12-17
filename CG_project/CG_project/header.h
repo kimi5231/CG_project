@@ -60,6 +60,10 @@ void InitSelectBuffer(void);
 void drawSelect(void);
 
 void VeiwAndProjectionTransform(void);
+//블록 교환
+void ChangeBlock(void);
+//선택 인터페이스 초기화
+void InitSelect(void);
 
 //블록 구조체
 typedef struct Block
@@ -72,9 +76,20 @@ typedef struct Block
 	bool del;
 }Block;
 
+//블록 자리 구조체
 typedef struct BlockSeat
 {
 	GLfloat transX;
 	GLfloat transY;
 	bool fill;
 }BlockSeat;
+
+//선택 인터페이스 구조체
+typedef struct Select
+{
+	int x;
+	int y;
+	int i[2];
+	int j[2];
+	int count;
+}Select;

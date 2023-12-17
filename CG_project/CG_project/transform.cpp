@@ -34,7 +34,7 @@ void VeiwAndProjectionTransform(void)
 	glm::mat4 view = glm::mat4(1.0f);
 	view = glm::lookAt(glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
-	view = glm::rotate(view, glm::radians(cam_radiansY), glm::vec3(0.0f, 1.0f, 0.0f));
+	//view = glm::rotate(view, glm::radians(cam_radiansY), glm::vec3(0.0f, 1.0f, 0.0f));
 
 	unsigned int viewLocation = glGetUniformLocation(shaderProgramID, "viewTransform");
 	glUniformMatrix4fv(viewLocation, 1, GL_FALSE, &view[0][0]);
